@@ -1,0 +1,989 @@
+<title>Red Traffic Media</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Red Traffic Media is a performance media partner for brands spending $100k+ a month on Meta, TikTok, Google and YouTube, across supplements and nutra, lead generation, fashion, beauty and more. Media buying, creative production and AI systems, priced at 10% of spend.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: night-highway control room. Full-bleed dark bands, a 12-col grid inside a 1240px rail,
+   one light-trail hero, then instrument-panel sections. Single dark look by design. */
+:root{
+  --ink:#07080b;          /* asphalt */
+  --ink-2:#0d0f14;        /* raised panel */
+  --ink-3:#151820;        /* hover / inputs */
+  --line:rgba(236,232,240,.09);
+  --line-2:rgba(236,232,240,.16);
+  --fg:#eeeaf0;
+  --fg-dim:#9b97a3;
+  --fg-faint:#625f6b;
+  --red:#ff2d3d;          /* tail light */
+  --red-deep:#b3001e;
+  --amber:#ffb23f;        /* signal amber */
+  --go:#3fe0a0;           /* signal green, data states only */
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --rail:1240px;
+  --r:14px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{background:var(--ink);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--rail);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+section{position:relative}
+.band{padding-block:clamp(80px,11vw,150px);border-top:1px solid var(--line)}
+
+/* type */
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-dim);display:inline-flex;align-items:center;gap:10px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 12px var(--red)}
+h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(44px,8.2vw,118px);line-height:.9;font-stretch:118%;text-transform:uppercase}
+h2{font-size:clamp(34px,5.2vw,68px);line-height:.95;font-stretch:112%;text-transform:uppercase}
+h3{font-size:22px;line-height:1.15;font-stretch:105%;font-weight:700}
+.lede{font-size:clamp(17px,1.6vw,20px);color:var(--fg-dim);max-width:60ch;margin:0}
+.red{color:var(--red)}
+.mono{font-family:var(--mono)}
+.tnum{font-variant-numeric:tabular-nums}
+.head{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+.head > div:first-child{grid-column:span 7;display:grid;gap:20px}
+.head > p{grid-column:9 / span 4}
+@media (max-width:900px){.head > div:first-child,.head > p{grid-column:1 / -1}}
+
+/* buttons */
+.btn{--h:52px;display:inline-flex;align-items:center;gap:12px;height:var(--h);padding:0 24px;border-radius:999px;font-family:var(--body);font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,border-color .2s ease;white-space:nowrap}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 0 0 0 rgba(255,45,61,.0),0 10px 40px -10px rgba(255,45,61,.7)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 6px rgba(255,45,61,.15),0 16px 50px -10px rgba(255,45,61,.9)}
+.btn-ghost{border-color:var(--line-2);color:var(--fg);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--fg-dim)}
+.btn .arr{transition:transform .2s ease}
+.btn:hover .arr{transform:translateX(3px)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);background:rgba(7,8,11,.72);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:800;font-stretch:120%;letter-spacing:.02em;text-transform:uppercase;font-size:15px}
+.logo-mark{width:30px;height:30px;position:relative;flex:none}
+.logo-mark i{position:absolute;left:0;right:0;height:4px;border-radius:2px;background:var(--red);box-shadow:0 0 10px var(--red)}
+.logo-mark i:nth-child(1){top:5px;right:10px}
+.logo-mark i:nth-child(2){top:13px;left:6px;right:2px;opacity:.75}
+.logo-mark i:nth-child(3){top:21px;left:12px;opacity:.45}
+.nav-links{display:flex;gap:30px;font-size:14px;color:var(--fg-dim)}
+.nav-links a{text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--fg)}
+.nav .btn{--h:42px;padding:0 18px;font-size:14px}
+.logo{white-space:nowrap}
+.short{display:none}
+@media (max-width:960px){.nav-links{display:none}}
+@media (max-width:520px){.nav .long{display:none}.nav .short{display:inline}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,110px) clamp(56px,7vw,96px)}
+#road{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+   radial-gradient(1200px 500px at 15% 30%,rgba(7,8,11,.88),transparent 70%),
+   linear-gradient(180deg,rgba(7,8,11,.2),rgba(7,8,11,0) 40%,var(--ink) 100%)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:56px;align-items:end}
+.hero-copy{display:grid;gap:30px;min-width:0}
+.hero h1 .line{display:block}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.gate{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--mono);font-size:12.5px;color:var(--fg-dim);letter-spacing:.04em}
+.gate span{display:inline-flex;gap:8px;align-items:center}
+.gate b{color:var(--fg);font-weight:500}
+@media (max-width:980px){.hero .wrap{grid-template-columns:1fr}}
+
+/* signal board */
+.board{background:linear-gradient(180deg,rgba(21,24,32,.82),rgba(13,15,20,.9));border:1px solid var(--line-2);border-radius:18px;padding:18px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 40px 120px -40px rgba(255,45,61,.35),inset 0 1px 0 rgba(255,255,255,.05);min-width:0}
+.board-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-dim);padding:2px 4px 14px;border-bottom:1px solid var(--line)}
+.live{display:inline-flex;align-items:center;gap:8px;color:var(--go)}
+.live i{width:6px;height:6px;border-radius:50%;background:var(--go);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:10px;overflow:hidden;margin-top:14px}
+.kpi{background:var(--ink-2);padding:14px 14px 12px;display:grid;gap:2px}
+.kpi small{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-faint)}
+.kpi strong{font-family:var(--display);font-stretch:110%;font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.kpi em{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--go)}
+.kpi em.down{color:var(--amber)}
+.spark{margin-top:14px;background:var(--ink-2);border-radius:10px;padding:12px 12px 6px}
+.spark-head{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-faint)}
+.spark svg{display:block;width:100%;height:84px}
+.feed{margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--fg-dim);display:grid;gap:6px;min-height:72px}
+.feed div{display:flex;gap:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed time{color:var(--fg-faint)}
+.feed .t-red{color:var(--red)}.feed .t-go{color:var(--go)}.feed .t-amb{color:var(--amber)}
+.board-foot{margin-top:10px;font-family:var(--mono);font-size:10.5px;color:var(--fg-faint);letter-spacing:.04em}
+
+/* platform strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--ink)}
+.strip-track{display:flex;gap:64px;padding-block:22px;width:max-content;animation:slide 40s linear infinite}
+.strip-track span{font-family:var(--display);font-stretch:120%;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.06em;color:var(--fg-faint);display:inline-flex;align-items:center;gap:64px}
+.strip-track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--red-deep)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fit-col{border:1px solid var(--line);border-radius:var(--r);padding:clamp(24px,3vw,36px);display:grid;gap:22px;align-content:start;background:var(--ink-2)}
+.fit-col.yes{border-color:rgba(255,45,61,.35);background:radial-gradient(500px 240px at 0% 0%,rgba(255,45,61,.10),transparent 70%),var(--ink-2)}
+.fit-col ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.fit-col li{display:grid;grid-template-columns:22px 1fr;gap:12px;color:var(--fg-dim)}
+.fit-col li b{color:var(--fg);font-weight:600}
+.fit-col li::before{content:"";width:10px;height:10px;margin-top:7px;border-radius:50%;border:2px solid var(--red);box-shadow:0 0 10px rgba(255,45,61,.6)}
+.fit-col.no li::before{border-color:var(--fg-faint);box-shadow:none}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px;border:1px solid var(--line-2);color:var(--fg-dim);justify-self:start}
+.fit-col.yes .tag{border-color:rgba(255,45,61,.5);color:var(--red)}
+@media (max-width:820px){.fit{grid-template-columns:1fr}}
+
+/* niches */
+.niches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.niche{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:var(--ink-2);display:grid;gap:12px;align-content:start;transition:border-color .25s,transform .25s}
+.niche:hover{border-color:rgba(255,45,61,.45);transform:translateY(-2px)}
+.niche .kpi-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.niche h3{font-size:20px}
+.niche p{margin:0;color:var(--fg-dim);font-size:14.5px}
+.niche.any{grid-column:span 2;border-style:dashed;border-color:var(--line-2);background:radial-gradient(500px 220px at 100% 100%,rgba(255,45,61,.10),transparent 70%),var(--ink-2);grid-template-columns:1fr auto;align-items:center;gap:20px}
+.niche.any p{max-width:44ch}
+@media (max-width:1000px){.niches{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.niches{grid-template-columns:1fr}.niche.any{grid-column:auto;grid-template-columns:1fr}}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.svc article{background:var(--ink);padding:clamp(24px,2.6vw,34px);display:grid;gap:16px;align-content:start;position:relative;transition:background .3s}
+.svc article:hover{background:var(--ink-2)}
+.svc article:nth-child(-n+2){grid-column:span 3}
+.svc article:nth-child(n+3){grid-column:span 2}
+.svc .code{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--red);text-transform:uppercase}
+.svc p{margin:0;color:var(--fg-dim);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chips span{font-family:var(--mono);font-size:11px;padding:5px 9px;border-radius:6px;background:var(--ink-3);color:var(--fg-dim);border:1px solid var(--line)}
+@media (max-width:900px){.svc article:nth-child(n){grid-column:span 6}}
+
+/* engine */
+.engine{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.engine-copy{display:grid;gap:26px}
+.loop-list{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.loop-list li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);cursor:default;transition:background .2s}
+.loop-list li span{font-family:var(--mono);font-size:12px;color:var(--fg-faint);letter-spacing:.1em;text-transform:uppercase;padding-top:3px}
+.loop-list li p{margin:0;color:var(--fg-dim);font-size:15px}
+.loop-list li p b{color:var(--fg);font-weight:600;display:block;font-size:16px;margin-bottom:2px}
+.loop-list li.on span{color:var(--red)}
+.engine-viz{aspect-ratio:1/1;max-width:100%;position:relative;border:1px solid var(--line);border-radius:22px;background:radial-gradient(closest-side,rgba(255,45,61,.08),transparent),var(--ink-2);overflow:hidden}
+.engine-viz canvas{position:absolute;inset:0;width:100%;height:100%}
+.engine-viz .label{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-dim);background:rgba(7,8,11,.8);border:1px solid var(--line-2);padding:6px 10px;border-radius:6px;transition:color .3s,border-color .3s}
+.engine-viz .label.on{color:var(--fg);border-color:var(--red);box-shadow:0 0 20px rgba(255,45,61,.35)}
+@media (max-width:900px){.engine{grid-template-columns:1fr}.loop-list li{grid-template-columns:90px 1fr}}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{border-top:2px solid var(--line-2);padding-top:22px;display:grid;gap:12px;align-content:start;position:relative}
+.step::before{content:"";position:absolute;top:-2px;left:0;height:2px;width:0;background:var(--red);box-shadow:0 0 12px var(--red);transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.step.seen::before{width:100%}
+.step .when{font-family:var(--mono);font-size:12px;color:var(--red);letter-spacing:.08em}
+.step p{margin:0;color:var(--fg-dim);font-size:15px}
+.step ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px;color:var(--fg-dim)}
+.step ul li::before{content:"→ ";color:var(--fg-faint)}
+@media (max-width:980px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* standards */
+.std{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.std div{background:var(--ink);padding:28px 24px;display:grid;gap:8px;align-content:start}
+.std strong{font-family:var(--display);font-stretch:118%;font-size:clamp(34px,4vw,52px);line-height:1;font-weight:800;font-variant-numeric:tabular-nums}
+.std strong sup{font-size:.45em;color:var(--red);vertical-align:top;margin-left:2px}
+.std span{color:var(--fg-dim);font-size:14.5px}
+.nda{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;border:1px dashed var(--line-2);border-radius:var(--r);padding:20px 24px;color:var(--fg-dim)}
+.nda p{margin:0;max-width:70ch}
+@media (max-width:900px){.std{grid-template-columns:1fr 1fr}}
+
+/* pricing */
+.pricing{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.calc{border:1px solid rgba(255,45,61,.35);border-radius:20px;padding:clamp(24px,3vw,40px);background:radial-gradient(700px 300px at 100% 0%,rgba(255,45,61,.12),transparent 70%),var(--ink-2);display:grid;gap:28px;align-content:start}
+.calc label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-dim);display:flex;justify-content:space-between;gap:12px}
+.spend-val{font-family:var(--display);font-stretch:118%;font-weight:800;font-size:clamp(40px,5vw,64px);line-height:1;font-variant-numeric:tabular-nums}
+.spend-val small{font-size:.35em;color:var(--fg-dim);font-family:var(--mono);font-weight:400;letter-spacing:.04em;margin-left:6px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--red) var(--p,0%),var(--ink-3) var(--p,0%))}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--ink-3)}
+input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--red)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-9px;border-radius:50%;background:#fff;border:5px solid var(--red);box-shadow:0 0 18px rgba(255,45,61,.8)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:5px solid var(--red);box-shadow:0 0 18px rgba(255,45,61,.8)}
+.ticks{position:relative;height:16px;font-family:var(--mono);font-size:11px;color:var(--fg-faint);margin:4px 11px 0}
+.ticks span{position:absolute;top:0;transform:translateX(-50%)}
+.ticks span:first-child{transform:none;left:-11px}
+.ticks span:last-child{transform:none;right:-11px}
+.out{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border-radius:12px;overflow:hidden}
+.out div{background:var(--ink);padding:16px;display:grid;gap:4px}
+.out small{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-faint)}
+.out b{font-family:var(--display);font-stretch:110%;font-size:24px;font-variant-numeric:tabular-nums}
+.out b.red{color:var(--red)}
+.calc-note{font-size:13.5px;color:var(--fg-dim);margin:0}
+@media (max-width:560px){.out{grid-template-columns:1fr}}
+.tiers{display:grid;gap:12px;align-content:start}
+.tier{border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:baseline;background:var(--ink-2);transition:border-color .25s,background .25s}
+.tier.on{border-color:var(--red);background:linear-gradient(90deg,rgba(255,45,61,.10),transparent 60%),var(--ink-2)}
+.tier h3{font-size:18px}
+.tier .rate{font-family:var(--display);font-stretch:118%;font-weight:800;font-size:30px;font-variant-numeric:tabular-nums}
+.tier p{grid-column:1 / -1;margin:0;color:var(--fg-dim);font-size:14px}
+.tier .range{font-family:var(--mono);font-size:12px;color:var(--fg-faint);grid-column:1 / -1}
+.incl{border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:var(--ink-2)}
+.incl h4{margin:0 0 12px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-dim);font-weight:500}
+.incl ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:14px}
+.incl li{display:flex;gap:8px}
+.incl li::before{content:"+";color:var(--red);font-family:var(--mono)}
+@media (max-width:980px){.pricing{grid-template-columns:1fr}}
+@media (max-width:480px){.incl ul{grid-template-columns:1fr}}
+
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;padding:22px 0;font-size:18px;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--red);font-size:22px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 22px;color:var(--fg-dim);max-width:62ch}
+@media (max-width:900px){.faq{grid-template-columns:1fr;gap:24px}}
+
+/* apply */
+.apply{background:radial-gradient(900px 500px at 80% 0%,rgba(255,45,61,.14),transparent 70%),var(--ink)}
+.apply-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px)}
+.apply-copy{display:grid;gap:24px;align-content:start}
+.next{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:16px}
+.next li{display:grid;grid-template-columns:auto 1fr;gap:14px;color:var(--fg-dim);font-size:15px}
+.next li span{font-family:var(--mono);font-size:12px;color:var(--red);padding-top:3px}
+.next li b{color:var(--fg);font-weight:600}
+form{border:1px solid var(--line-2);border-radius:20px;padding:clamp(22px,3vw,36px);background:rgba(13,15,20,.85);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f{display:grid;gap:8px;min-width:0}
+.f.full{grid-column:1 / -1}
+.f label,.f legend{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-dim);padding:0}
+.f input,.f select,.f textarea{width:100%;font:inherit;font-size:15px;color:var(--fg);background:var(--ink-3);border:1px solid var(--line);border-radius:10px;padding:13px 14px;transition:border-color .2s,box-shadow .2s}
+.f textarea{min-height:110px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(255,45,61,.15)}
+.f input::placeholder,.f textarea::placeholder{color:var(--fg-faint)}
+fieldset.f{border:0;margin:0;padding:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.pills input{position:absolute;left:0;top:0;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
+.pills label{font-family:var(--body);text-transform:none;letter-spacing:0;font-size:14px;color:var(--fg-dim);border:1px solid var(--line-2);border-radius:999px;padding:8px 14px;cursor:pointer;transition:all .2s}
+.pills input:checked + label{border-color:var(--red);color:var(--fg);background:rgba(255,45,61,.12)}
+.pills input:focus-visible + label{outline:2px solid var(--amber);outline-offset:2px}
+.form-foot{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.form-foot small{color:var(--fg-faint);font-size:13px;max-width:40ch}
+.msg{grid-column:1 / -1;border-radius:12px;padding:16px 18px;font-size:14.5px;border:1px solid var(--line-2);background:var(--ink-3)}
+.msg b{display:block;margin-bottom:4px;color:var(--fg)}
+.msg.warn{border-color:rgba(255,178,63,.5)}
+.msg.ok{border-color:rgba(63,224,160,.5)}
+@media (max-width:980px){.apply-grid{grid-template-columns:1fr}}
+@media (max-width:560px){form{grid-template-columns:1fr}}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:56px 40px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.foot h5{margin:0 0 14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-faint);font-weight:500}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px;color:var(--fg-dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--fg)}
+.foot p{color:var(--fg-dim);font-size:14px;max-width:34ch;margin:14px 0 0}
+.wordmark{margin-top:56px;font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(40px,10.5vw,150px);line-height:.85;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(255,45,61,.45);white-space:nowrap;overflow:hidden}
+.legal{margin-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11.5px;color:var(--fg-faint)}
+@media (max-width:820px){.foot{grid-template-columns:1fr 1fr}}
+
+/* reveal: visible at rest, animated only when JS + motion allowed */
+.js .rv{opacity:.001;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .strip-track,.live i{animation:none}
+  .step::before{width:100%;transition:none}
+}
+</style>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Red Traffic Media home">
+      <span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      Red Traffic
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#niches">Niches</a>
+      <a href="#engine">AI systems</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-primary" href="#apply"><span class="long">Apply to work with us</span><span class="short">Apply</span> <span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="road" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>Paid media · Creative · AI systems</span>
+      <h1>
+        <span class="line">Scale past</span>
+        <span class="line outline">the plateau.</span>
+      </h1>
+      <p class="lede">Red Traffic Media runs Meta, TikTok, Google and YouTube for brands already spending $100k+ a month, from supplements and lead gen to fashion and beyond. We pair senior media buyers with an in-house creative studio and our own AI systems, and we manage to contribution margin, not platform ROAS.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#apply">Apply for an account audit <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#pricing">See pricing</a>
+      </div>
+      <div class="gate">
+        <span>Min. spend <b>$100k / mo</b></span>
+        <span>Fee from <b>10% of spend</b></span>
+        <span>Onboarding <b>4 brands / quarter</b></span>
+      </div>
+    </div>
+
+    <aside class="board" aria-label="Sample account dashboard">
+      <div class="board-top">
+        <span>Signal board · sample account</span>
+        <span class="live"><i></i>Live</span>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><small>Spend this week</small><strong id="k-spend" class="tnum">$286,940</strong><em>pacing 98% of plan</em></div>
+        <div class="kpi"><small>Blended MER</small><strong id="k-mer" class="tnum">3.42</strong><em>+0.31 vs 30d</em></div>
+        <div class="kpi"><small>New-cust. CAC</small><strong id="k-cac" class="tnum">$48.10</strong><em>−12% vs 30d</em></div>
+        <div class="kpi"><small>Creative hit rate</small><strong id="k-hit" class="tnum">27%</strong><em class="down">target 25%</em></div>
+      </div>
+      <div class="spark">
+        <div class="spark-head"><span>Contribution margin · 30d</span><span id="k-cm" class="tnum">$1.84M</span></div>
+        <svg viewBox="0 0 300 84" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="sg" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#ff2d3d" stop-opacity=".45"/>
+              <stop offset="1" stop-color="#ff2d3d" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="rgba(236,232,240,.06)" stroke-width="1"><line x1="0" x2="300" y1="21" y2="21"/><line x1="0" x2="300" y1="42" y2="42"/><line x1="0" x2="300" y1="63" y2="63"/></g>
+          <path id="sp-area" fill="url(#sg)" d=""/>
+          <path id="sp-line" fill="none" stroke="#ff2d3d" stroke-width="2" d=""/>
+          <circle id="sp-dot" r="3.5" fill="#fff" stroke="#ff2d3d" stroke-width="2" cx="0" cy="0"/>
+        </svg>
+      </div>
+      <div class="feed" id="feed" aria-live="off"></div>
+      <div class="board-foot">Illustrative data. Shows the reporting view clients get.</div>
+    </aside>
+  </div>
+</header>
+
+<div class="strip" aria-label="Channels we buy">
+  <div class="strip-track">
+    <span>Meta</span><span>TikTok</span><span>TikTok Shop</span><span>Google Search</span><span>Performance Max</span><span>YouTube</span><span>Snapchat</span><span>Pinterest</span><span>AppLovin</span><span>Reddit</span><span>CTV</span>
+    <span aria-hidden="true">Meta</span><span aria-hidden="true">TikTok</span><span aria-hidden="true">TikTok Shop</span><span aria-hidden="true">Google Search</span><span aria-hidden="true">Performance Max</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Snapchat</span><span aria-hidden="true">Pinterest</span><span aria-hidden="true">AppLovin</span><span aria-hidden="true">Reddit</span><span aria-hidden="true">CTV</span>
+  </div>
+</div>
+
+<section class="band" id="fit">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Who we work with</span>
+        <h2>Built for brands <span class="red">already moving.</span></h2>
+      </div>
+      <p class="lede">We take a small number of accounts so senior people stay on them. If the list on the right sounds like you, we're probably not the right partner yet, and we'll tell you so.</p>
+    </div>
+    <div class="fit">
+      <div class="fit-col yes rv">
+        <span class="tag">Good fit</span>
+        <ul>
+          <li><span><b>$100k+ a month in paid social and search</b>, or a funded plan to get there within a quarter.</span></li>
+          <li><span><b>Proven product-market fit.</b> Repeat purchase, healthy reviews, margins that can carry acquisition.</span></li>
+          <li><span><b>A growth wall you can name.</b> CAC climbing, creative fatigue, one channel carrying everything.</span></li>
+          <li><span><b>A team that ships.</b> Landing pages, offers and inventory can move within days.</span></li>
+        </ul>
+      </div>
+      <div class="fit-col no rv">
+        <span class="tag">Not a fit yet</span>
+        <ul>
+          <li><span><b>Pre-launch or still testing offers</b> with no conversion data to learn from.</span></li>
+          <li><span><b>Under $100k a month in spend.</b> Our fee would eat too much of your working budget.</span></li>
+          <li><span><b>Judged only on in-platform ROAS.</b> We report on new customers and margin.</span></li>
+          <li><span><b>Looking for a cheap pair of hands</b> to press buttons inside Ads Manager.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="niches">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Niches we scale</span>
+        <h2>Any vertical. <span class="red">Same discipline.</span></h2>
+      </div>
+      <p class="lede">Every niche has its own economics, policies and creative rules. We plan around the metric that actually decides profit in yours.</p>
+    </div>
+    <div class="niches">
+      <article class="niche rv">
+        <span class="kpi-tag">Tracked on: subscription LTV</span>
+        <h3>Supplements & nutra</h3>
+        <p>Policy-safe claims written with compliance in mind, so ads get approved and accounts stay healthy. Built for subscribe-and-save and repeat buyers.</p>
+      </article>
+      <article class="niche rv">
+        <span class="kpi-tag">Tracked on: cost per qualified lead</span>
+        <h3>Lead generation</h3>
+        <p>Instant forms, quizzes and landing pages, with CRM outcomes sent back to the platforms so they optimise for leads that close.</p>
+      </article>
+      <article class="niche rv">
+        <span class="kpi-tag">Tracked on: margin after returns</span>
+        <h3>Fashion & apparel</h3>
+        <p>Catalog ads, collection launches and drop calendars, with creator content that moves new colourways fast.</p>
+      </article>
+      <article class="niche rv">
+        <span class="kpi-tag">Tracked on: first-order CAC</span>
+        <h3>Beauty & skincare</h3>
+        <p>Before-and-after storytelling, routine bundles and creator seeding, kept within platform rules on results claims.</p>
+      </article>
+      <article class="niche rv">
+        <span class="kpi-tag">Tracked on: cost per booked call</span>
+        <h3>Info, coaching & B2B</h3>
+        <p>Webinar, VSL and application funnels where the real conversion happens on a sales call, not a checkout.</p>
+      </article>
+      <article class="niche rv">
+        <span class="kpi-tag">Tracked on: payback period</span>
+        <h3>Apps & subscriptions</h3>
+        <p>Trial-to-paid optimisation across Meta, TikTok and AppLovin, measured on cohorts rather than installs.</p>
+      </article>
+      <article class="niche any rv">
+        <div style="display:grid;gap:10px">
+          <span class="kpi-tag">Something else?</span>
+          <h3>Home, pets, food & drink, health, finance and more</h3>
+          <p>If the product works and you're spending $100k+ a month, the niche matters less than the numbers. Tell us yours.</p>
+        </div>
+        <a class="btn btn-ghost" href="#apply">Apply <span class="arr" aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>What we run</span>
+        <h2>One team. Media, creative <span class="red">and the systems</span> between them.</h2>
+      </div>
+      <p class="lede">Platform algorithms now do most of the targeting. What still decides results is the creative you feed them, the signal you send back, and how fast you act on it.</p>
+    </div>
+    <div class="svc">
+      <article class="rv">
+        <span class="code">Media buying</span>
+        <h3>Paid social & search at scale</h3>
+        <p>Account structures built for how Meta's Andromeda ranking and TikTok's GMV Max work today: fewer, broader campaigns fed by many distinct creative concepts. Budgets move daily against margin, not hunches.</p>
+        <div class="chips"><span>Meta Advantage+</span><span>TikTok GMV Max</span><span>Google PMax</span><span>YouTube</span><span>AppLovin</span></div>
+      </article>
+      <article class="rv">
+        <span class="code">Creative studio</span>
+        <h3>Ads built to be tested</h3>
+        <p>Strategists, editors, designers and a vetted UGC creator network. Every brief starts from a hypothesis about an angle, an audience or a hook, so every result teaches the next round something.</p>
+        <div class="chips"><span>UGC & creators</span><span>Static</span><span>Motion</span><span>Founder-led</span><span>TikTok-native</span></div>
+      </article>
+      <article class="rv">
+        <span class="code">AI systems</span>
+        <h3>Our own tooling</h3>
+        <p>Creative tagging, spend anomaly alerts, competitor ad monitoring and brief generation, running on your account data every day.</p>
+      </article>
+      <article class="rv">
+        <span class="code">Optimisation</span>
+        <h3>CRO & landing pages</h3>
+        <p>Offer and page tests run alongside media so the traffic you pay for converts. Advertorials, listicles and quiz funnels built per angle.</p>
+      </article>
+      <article class="rv">
+        <span class="code">Measurement</span>
+        <h3>Signal & attribution</h3>
+        <p>Server-side CAPI and Events API, post-purchase surveys, incrementality holdouts and a blended MER view your CFO will trust.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="engine">
+  <div class="wrap engine">
+    <div class="engine-copy rv">
+      <span class="eyebrow"><span class="dot"></span>The Red Traffic engine</span>
+      <h2>A loop that <span class="red">runs every day.</span></h2>
+      <p class="lede">Most agencies review accounts weekly. Our systems read your accounts continuously and hand our buyers and creatives a short list of what to do next.</p>
+      <ol class="loop-list" id="loop">
+        <li data-i="0"><span>Ingest</span><p><b>Pull every signal</b>Ad platforms, Shopify, GA4, post-purchase surveys and margin data in one model.</p></li>
+        <li data-i="1"><span>Diagnose</span><p><b>Tag every creative</b>AI labels each ad by hook, angle, format and persona, so we learn why a winner wins.</p></li>
+        <li data-i="2"><span>Produce</span><p><b>Brief the next round</b>Briefs are drafted from what's working and what competitors are scaling. Humans write the final cut.</p></li>
+        <li data-i="3"><span>Deploy</span><p><b>Launch and pace</b>New concepts ship weekly. Anomaly alerts catch broken pixels and runaway spend within the hour.</p></li>
+      </ol>
+    </div>
+    <div class="engine-viz rv" aria-hidden="true">
+      <canvas id="loopviz"></canvas>
+      <span class="label" data-l="0" style="left:50%;top:7%;transform:translateX(-50%)">Ingest</span>
+      <span class="label" data-l="1" style="right:5%;top:50%;transform:translateY(-50%)">Diagnose</span>
+      <span class="label" data-l="2" style="left:50%;bottom:7%;transform:translateX(-50%)">Produce</span>
+      <span class="label" data-l="3" style="left:5%;top:50%;transform:translateY(-50%)">Deploy</span>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="process">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>First 90 days</span>
+        <h2>From audit to <span class="red">compounding.</span></h2>
+      </div>
+      <p class="lede">A fixed onboarding path, so you know what happens each week and what we expect from your team.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <span class="when">Week 0</span>
+        <h3>Audit</h3>
+        <p>A full teardown of your accounts, creative, tracking and unit economics, delivered on a call before you sign.</p>
+        <ul><li>Wasted spend map</li><li>Tracking gaps</li><li>Margin-based CAC targets</li></ul>
+      </div>
+      <div class="step rv">
+        <span class="when">Weeks 1–2</span>
+        <h3>Rebuild</h3>
+        <p>Fix signal first, then consolidate structures. The first creative sprint goes into production on day one.</p>
+        <ul><li>CAPI and Events API</li><li>Account consolidation</li><li>First 20+ concepts</li></ul>
+      </div>
+      <div class="step rv">
+        <span class="when">Weeks 3–8</span>
+        <h3>Scale</h3>
+        <p>Weekly creative drops and daily budget moves. Spend climbs where marginal CAC holds and pulls back where it doesn't.</p>
+        <ul><li>Weekly testing cadence</li><li>New channel tests</li><li>Landing page splits</li></ul>
+      </div>
+      <div class="step rv">
+        <span class="when">Week 9+</span>
+        <h3>Compound</h3>
+        <p>Your creative library and data model get sharper each month. Quarterly incrementality tests keep the numbers honest.</p>
+        <ul><li>Holdout tests</li><li>Quarterly strategy review</li><li>Annual plan modelling</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="standards">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Operating standards</span>
+        <h2>What you can <span class="red">hold us to.</span></h2>
+      </div>
+      <p class="lede">These are written into every contract.</p>
+    </div>
+    <div class="std rv">
+      <div><strong class="tnum">24<sup>H</sup></strong><span>Maximum reply time from your dedicated lead on business days.</span></div>
+      <div><strong class="tnum">20<sup>+</sup></strong><span>New creative concepts shipped to your account every month.</span></div>
+      <div><strong class="tnum">1:3</strong><span>Senior buyer to account ratio. No junior hand-offs.</span></div>
+      <div><strong class="tnum">30<sup>D</sup></strong><span>Notice to leave after the first 90 days. No long lock-in.</span></div>
+    </div>
+    <div class="nda rv">
+      <p>Most of our clients don't allow public case studies. We walk through relevant results, with real account data, on your audit call under NDA.</p>
+      <a class="btn btn-ghost" href="#apply">Book the audit <span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="pricing">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Pricing</span>
+        <h2>One number. <span class="red">No surprises.</span></h2>
+      </div>
+      <p class="lede">A percentage of managed ad spend that drops as you scale. Creative production, AI tooling and reporting are included, so there are no add-on invoices.</p>
+    </div>
+    <div class="pricing">
+      <div class="calc rv">
+        <div>
+          <label for="spend"><span>Monthly ad spend</span><span id="tierName">Scale</span></label>
+          <div class="spend-val tnum" id="spendOut">$150,000<small>/ mo</small></div>
+          <input type="range" id="spend" min="100000" max="2000000" step="10000" value="150000" aria-describedby="feeOut">
+          <div class="ticks" aria-hidden="true"><span>$100k</span><span style="left:21.05%">$500k</span><span style="left:47.37%">$1M</span><span>$2M+</span></div>
+        </div>
+        <div class="out">
+          <div><small>Rate</small><b class="tnum" id="rateOut">10%</b></div>
+          <div><small>Monthly fee</small><b class="tnum red" id="feeOut">$15,000</b></div>
+          <div><small>Fee / spend</small><b class="tnum" id="effOut">10.0%</b></div>
+        </div>
+        <p class="calc-note" id="calcNote">Rates are marginal, like tax brackets: each rate applies only to the spend inside its band. Above $1M a month we agree a custom rate.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier rv" data-tier="0"><h3>Scale</h3><span class="rate">10%</span><span class="range">$100k – $300k / mo · minimum fee $10k</span><p>Full team, weekly creative drops, Meta and TikTok plus one more channel.</p></div>
+        <div class="tier rv" data-tier="1"><h3>Velocity</h3><span class="rate">8%</span><span class="range">On spend from $300k – $1M / mo</span><p>Adds a dedicated creative pod, multi-channel buying and quarterly incrementality testing.</p></div>
+        <div class="tier rv" data-tier="2"><h3>Enterprise</h3><span class="rate">Custom</span><span class="range">$1M+ / mo</span><p>Custom rate, embedded team, data-warehouse integration and international markets.</p></div>
+        <div class="incl rv">
+          <h4>Included at every tier</h4>
+          <ul>
+            <li>Senior media buyer</li><li>Creative strategy & production</li>
+            <li>UGC creator sourcing</li><li>AI creative analytics</li>
+            <li>Tracking & CAPI setup</li><li>Live reporting dashboard</li>
+            <li>Landing page testing</li><li>Shared Slack channel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap faq">
+    <div class="rv" style="display:grid;gap:20px;align-content:start">
+      <span class="eyebrow"><span class="dot"></span>Questions</span>
+      <h2>Before you <span class="red">apply.</span></h2>
+    </div>
+    <div class="rv">
+      <details>
+        <summary>Doesn't a percentage of spend reward you for spending more?</summary>
+        <p>It's the fair question to ask. That's why our targets are set on new-customer CAC and contribution margin, agreed with you before we start. If more spend stops being profitable, we recommend pulling it back, and we put that in writing in the monthly review.</p>
+      </details>
+      <details>
+        <summary>Why is the minimum $100k a month?</summary>
+        <p>Below that level, platforms don't get enough conversions to learn quickly, and a full senior team costs too much as a share of your budget. You'd get better value from a freelancer or a smaller agency until you reach that scale.</p>
+      </details>
+      <details>
+        <summary>Who owns the ad accounts and creative?</summary>
+        <p>You do. We work inside your Business Manager and ad accounts, and every creative file we produce belongs to you, including raw footage from creators.</p>
+      </details>
+      <details>
+        <summary>Is creative production really included?</summary>
+        <p>Yes. Strategy, scripting, editing, design and creator sourcing are part of the fee. Creator usage fees and large shoots are passed through at cost and approved by you first.</p>
+      </details>
+      <details>
+        <summary>What do you need from our team?</summary>
+        <p>Admin access to ad accounts and analytics, a weekly 30-minute call, quick sign-off on creative, and someone who can ship landing page and offer changes within a few days.</p>
+      </details>
+      <details>
+        <summary>How long is the contract?</summary>
+        <p>A 90-day initial term, which is how long a proper rebuild takes to show up in the numbers. After that it's rolling with 30 days' notice.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band apply" id="apply">
+  <div class="wrap apply-grid">
+    <div class="apply-copy rv">
+      <span class="eyebrow"><span class="dot"></span>Apply</span>
+      <h2>Get a free <span class="red">account audit.</span></h2>
+      <p class="lede">Tell us where you are. If we can help, you'll get a full teardown of your accounts on a call, whether or not you hire us.</p>
+      <ol class="next">
+        <li><span>01</span><div><b>We review your application</b> within two business days.</div></li>
+        <li><span>02</span><div><b>You share read-only access</b> to your ad accounts.</div></li>
+        <li><span>03</span><div><b>We present the audit</b> on a 45-minute call with a senior buyer.</div></li>
+      </ol>
+    </div>
+    <form id="applyForm" class="rv" novalidate>
+      <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required placeholder="Jordan Lee"></div>
+      <div class="f"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required placeholder="jordan@brand.com"></div>
+      <div class="f"><label for="f-site">Brand website</label><input id="f-site" name="website" type="url" inputmode="url" required placeholder="https://brand.com"></div>
+      <div class="f"><label for="f-spend">Current monthly ad spend</label>
+        <select id="f-spend" name="spend" required>
+          <option value="" selected disabled>Select a range</option>
+          <option value="lt50">Under $50k</option>
+          <option value="50-100">$50k – $100k</option>
+          <option value="100-250">$100k – $250k</option>
+          <option value="250-500">$250k – $500k</option>
+          <option value="500-1m">$500k – $1M</option>
+          <option value="1m+">$1M+</option>
+        </select>
+      </div>
+      <fieldset class="f full">
+        <legend>Channels you run today</legend>
+        <div class="pills">
+          <input type="checkbox" id="c-meta" name="channels" value="Meta"><label for="c-meta">Meta</label>
+          <input type="checkbox" id="c-tt" name="channels" value="TikTok"><label for="c-tt">TikTok</label>
+          <input type="checkbox" id="c-tts" name="channels" value="TikTok Shop"><label for="c-tts">TikTok Shop</label>
+          <input type="checkbox" id="c-g" name="channels" value="Google"><label for="c-g">Google</label>
+          <input type="checkbox" id="c-yt" name="channels" value="YouTube"><label for="c-yt">YouTube</label>
+          <input type="checkbox" id="c-o" name="channels" value="Other"><label for="c-o">Other</label>
+        </div>
+      </fieldset>
+      <div class="f full"><label for="f-wall">What's stopping you from scaling right now?</label><textarea id="f-wall" name="constraint" placeholder="e.g. CAC up 40% since Q2, one hero creative carrying 70% of spend, TikTok never worked for us."></textarea></div>
+      <div class="msg" id="formMsg" hidden></div>
+      <div class="form-foot">
+        <small>We read every application ourselves. No newsletters, no sales sequences.</small>
+        <button class="btn btn-primary" type="submit">Submit application <span class="arr" aria-hidden="true">→</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span>Red Traffic Media</a>
+        <p>Performance media, creative and AI systems for brands spending $100k+ a month.</p>
+      </div>
+      <div><h5>Services</h5><ul><li><a href="#services">Media buying</a></li><li><a href="#services">Creative studio</a></li><li><a href="#engine">AI systems</a></li><li><a href="#services">CRO</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#process">Process</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#apply">Apply</a></li></ul></div>
+      <div><h5>Contact</h5><ul><li class="mono">hello@redtraffic.media</li><li>Remote · Global</li></ul></div>
+    </div>
+    <div class="wordmark" aria-hidden="true">Red Traffic</div>
+    <div class="legal"><span>© <span id="yr">2026</span> Red Traffic Media</span><span>Meta, TikTok, Google and YouTube are trademarks of their owners.</span></div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  document.documentElement.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---------- hero: long-exposure traffic ---------- */
+  const road = document.getElementById('road');
+  const rc = road.getContext('2d');
+  let W = 0, H = 0, DPR = 1, cars = [];
+  const LANES = 14;
+  function sizeRoad(){
+    DPR = Math.min(devicePixelRatio || 1, 2);
+    W = road.clientWidth; H = road.clientHeight;
+    road.width = W * DPR; road.height = H * DPR;
+    rc.setTransform(DPR,0,0,DPR,0,0);
+  }
+  function lanePt(lane, t){
+    // vanishing point upper right; lanes fan out to bottom edge
+    const vx = W * 0.78, vy = H * 0.34;
+    const bx = -W * 0.35 + (lane / (LANES - 1)) * W * 1.9, by = H * 1.08;
+    const e = Math.pow(t, 2.3);
+    // slight curve so trails feel like a bending highway
+    const bend = Math.sin(t * Math.PI) * W * 0.06 * (1 - lane / LANES);
+    return [vx + (bx - vx) * e - bend, vy + (by - vy) * e];
+  }
+  function spawn(init){
+    const lane = Math.floor(Math.random() * LANES);
+    const away = lane < LANES * 0.55; // left lanes: red tail lights heading away
+    return { lane, away, t: init ? Math.random() : (away ? 1 : 0), v: 0.0018 + Math.random() * 0.0035, len: 0.05 + Math.random() * 0.08, hue: Math.random() };
+  }
+  function initCars(){ cars = Array.from({length: Math.round(Math.min(120, W / 9))}, () => spawn(true)); }
+  function drawRoad(){
+    rc.clearRect(0,0,W,H);
+    // lane lines
+    rc.lineWidth = 1;
+    for (let l = 0; l < LANES; l++){
+      rc.beginPath();
+      for (let i = 0; i <= 30; i++){ const [x,y] = lanePt(l + 0.5, i / 30); i ? rc.lineTo(x,y) : rc.moveTo(x,y); }
+      rc.strokeStyle = 'rgba(236,232,240,0.035)'; rc.stroke();
+    }
+    rc.globalCompositeOperation = 'lighter';
+    for (const c of cars){
+      const t0 = Math.max(0, c.t - c.len), t1 = Math.min(1, c.t);
+      const [x0,y0] = lanePt(c.lane, t0), [x1,y1] = lanePt(c.lane, t1);
+      const g = rc.createLinearGradient(x0,y0,x1,y1);
+      const col = c.away ? (c.hue < .85 ? '255,45,61' : '255,178,63') : (c.hue < .7 ? '255,236,220' : '255,178,63');
+      const head = c.away ? 0 : 1;
+      g.addColorStop(head ? 0 : 1, `rgba(${col},0)`);
+      g.addColorStop(head ? 1 : 0, `rgba(${col},${c.away ? .95 : .55})`);
+      rc.strokeStyle = g;
+      rc.lineWidth = 0.6 + Math.pow(c.t, 2.3) * 5;
+      rc.lineCap = 'round';
+      rc.beginPath(); rc.moveTo(x0,y0); rc.lineTo(x1,y1); rc.stroke();
+    }
+    rc.globalCompositeOperation = 'source-over';
+  }
+  function stepRoad(){
+    for (let i = 0; i < cars.length; i++){
+      const c = cars[i];
+      c.t += c.away ? -c.v : c.v;
+      if (c.t > 1 + c.len || c.t < 0) cars[i] = spawn(false);
+    }
+  }
+  let roadVisible = true;
+  new IntersectionObserver(([e]) => roadVisible = e.isIntersecting).observe(road);
+  function loopRoad(){ if (roadVisible){ stepRoad(); drawRoad(); } requestAnimationFrame(loopRoad); }
+  sizeRoad(); initCars();
+  if (reduce){ drawRoad(); } else { loopRoad(); }
+  addEventListener('resize', () => { sizeRoad(); initCars(); if (reduce) drawRoad(); });
+
+  /* ---------- signal board ---------- */
+  const fmt$ = (n, d = 0) => '$' + n.toLocaleString('en-US', {minimumFractionDigits: d, maximumFractionDigits: d});
+  let series = Array.from({length: 30}, (_, i) => 40 + i * 1.1 + Math.sin(i * .7) * 6 + Math.random() * 4);
+  function drawSpark(){
+    const min = Math.min(...series) - 6, max = Math.max(...series) + 4;
+    const pts = series.map((v, i) => [i / (series.length - 1) * 296 + 2, 80 - (v - min) / (max - min) * 72]);
+    const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+    document.getElementById('sp-line').setAttribute('d', d);
+    document.getElementById('sp-area').setAttribute('d', d + ' L298 84 L2 84 Z');
+    const last = pts[pts.length - 1];
+    const dot = document.getElementById('sp-dot');
+    dot.setAttribute('cx', last[0]); dot.setAttribute('cy', last[1]);
+  }
+  drawSpark();
+  const feedEl = document.getElementById('feed');
+  const events = [
+    ['t-go','Scaled','Hook test #214 · UGC "3 reasons" · +20% budget'],
+    ['t-red','Paused','Static v12 · frequency 4.1 · CPA +38%'],
+    ['t-amb','Alert','Purchase events down 22% vs hour avg · checking CAPI'],
+    ['t-go','Launched','8 new concepts · TikTok GMV Max'],
+    ['t-go','Winner','Founder-led v3 · nCAC $39 · moved to scale'],
+    ['t-amb','Brief','Competitor scaling "before/after" angle · brief drafted'],
+    ['t-red','Cut','Advantage+ audience overlap · consolidated 3 ad sets'],
+    ['t-go','Test','Listicle LP vs PDP · 50/50 split live'],
+  ];
+  let ei = 0, spend = 286940;
+  const clock = () => { const d = new Date(); return d.toTimeString().slice(0,5); };
+  function pushEvent(){
+    const [cls, verb, text] = events[ei++ % events.length];
+    const row = document.createElement('div');
+    row.innerHTML = `<time>${clock()}</time><span class="${cls}">${verb}</span><span>${text}</span>`;
+    feedEl.prepend(row);
+    while (feedEl.children.length > 3) feedEl.lastChild.remove();
+  }
+  pushEvent(); pushEvent(); pushEvent();
+  if (!reduce){
+    setInterval(() => {
+      // small ticks so the weekly total creeps up instead of racing
+      spend += Math.round(4 + Math.random() * 14);
+      document.getElementById('k-spend').textContent = fmt$(spend);
+      const mer = 3.3 + Math.random() * .25;
+      document.getElementById('k-mer').textContent = mer.toFixed(2);
+      document.getElementById('k-cac').textContent = fmt$(46 + Math.random() * 4, 2);
+      series = series.slice(1).concat(series[series.length - 1] + (Math.random() - .35) * 4);
+      drawSpark();
+    }, 1800);
+    setInterval(pushEvent, 3600);
+  }
+
+  /* ---------- engine loop viz ---------- */
+  const lv = document.getElementById('loopviz');
+  const lx = lv.getContext('2d');
+  const loopItems = [...document.querySelectorAll('#loop li')];
+  const labels = [...document.querySelectorAll('.engine-viz .label')];
+  let active = 0, phase = 0, hoverLock = false;
+  function setActive(i){
+    active = i;
+    loopItems.forEach((li, k) => li.classList.toggle('on', k === i));
+    labels.forEach((l, k) => l.classList.toggle('on', k === i));
+  }
+  loopItems.forEach((li, i) => {
+    li.addEventListener('mouseenter', () => { hoverLock = true; setActive(i); phase = i / 4; });
+    li.addEventListener('mouseleave', () => { hoverLock = false; });
+  });
+  setActive(0);
+  function sizeLoop(){ const r = lv.getBoundingClientRect(); lv.width = r.width * DPR; lv.height = r.height * DPR; lx.setTransform(DPR,0,0,DPR,0,0); }
+  sizeLoop(); addEventListener('resize', sizeLoop);
+  const dots = Array.from({length: 70}, () => ({a: Math.random() * Math.PI * 2, r: .62 + Math.random() * .3, s: .002 + Math.random() * .004}));
+  function drawLoop(){
+    const w = lv.clientWidth, h = lv.clientHeight, cx = w / 2, cy = h / 2, R = Math.min(w, h) * .34;
+    lx.clearRect(0,0,w,h);
+    // rings
+    for (let k = 1; k <= 3; k++){ lx.beginPath(); lx.arc(cx, cy, R * (k / 3) * 1.25, 0, Math.PI * 2); lx.strokeStyle = 'rgba(236,232,240,0.06)'; lx.lineWidth = 1; lx.stroke(); }
+    // main orbit
+    lx.beginPath(); lx.arc(cx, cy, R, 0, Math.PI * 2); lx.strokeStyle = 'rgba(236,232,240,0.14)'; lx.stroke();
+    // comet arc
+    const a = phase * Math.PI * 2 - Math.PI / 2;
+    for (let i = 0; i < 40; i++){
+      const aa = a - i * 0.03;
+      lx.beginPath(); lx.arc(cx, cy, R, aa - 0.03, aa);
+      lx.strokeStyle = `rgba(255,45,61,${(1 - i / 40) * .9})`; lx.lineWidth = 3; lx.stroke();
+    }
+    lx.beginPath(); lx.arc(cx + Math.cos(a) * R, cy + Math.sin(a) * R, 6, 0, Math.PI * 2);
+    lx.fillStyle = '#fff'; lx.shadowColor = '#ff2d3d'; lx.shadowBlur = 24; lx.fill(); lx.shadowBlur = 0;
+    // nodes
+    for (let k = 0; k < 4; k++){
+      const na = k * Math.PI / 2 - Math.PI / 2;
+      lx.beginPath(); lx.arc(cx + Math.cos(na) * R, cy + Math.sin(na) * R, k === active ? 7 : 4, 0, Math.PI * 2);
+      lx.fillStyle = k === active ? '#ff2d3d' : 'rgba(236,232,240,0.4)'; lx.fill();
+    }
+    // data particles drifting inward
+    for (const d of dots){
+      if (!reduce) { d.r -= d.s; if (d.r < .08) { d.r = .95; d.a = Math.random() * Math.PI * 2; } }
+      const rr = d.r * R * 1.25;
+      lx.fillStyle = `rgba(255,${d.r > .5 ? 178 : 45},${d.r > .5 ? 63 : 61},${Math.min(1, d.r) * .7})`;
+      lx.fillRect(cx + Math.cos(d.a) * rr, cy + Math.sin(d.a) * rr, 1.6, 1.6);
+    }
+    // core
+    const g = lx.createRadialGradient(cx, cy, 0, cx, cy, R * .4);
+    g.addColorStop(0, 'rgba(255,45,61,.55)'); g.addColorStop(1, 'rgba(255,45,61,0)');
+    lx.fillStyle = g; lx.beginPath(); lx.arc(cx, cy, R * .4, 0, Math.PI * 2); lx.fill();
+    lx.fillStyle = 'rgba(236,232,240,.85)'; lx.font = '500 11px "Geist Mono", monospace'; lx.textAlign = 'center';
+    lx.fillText('YOUR ACCOUNT', cx, cy + 4);
+  }
+  let loopVisible = false;
+  new IntersectionObserver(([e]) => loopVisible = e.isIntersecting).observe(lv);
+  function tickLoop(){
+    if (loopVisible){
+      if (!hoverLock){ phase = (phase + 0.0025) % 1; const k = Math.floor(((phase + 0.125) % 1) * 4); if (k !== active) setActive(k); }
+      drawLoop();
+    }
+    requestAnimationFrame(tickLoop);
+  }
+  if (reduce) drawLoop(); else tickLoop();
+
+  /* ---------- pricing calculator ---------- */
+  const range = document.getElementById('spend');
+  const tiers = [...document.querySelectorAll('.tier')];
+  function fee(s){
+    // marginal bands: 10% to $300k, 8% from $300k to $1M
+    const a = Math.min(s, 300000) * 0.10;
+    const b = Math.max(0, Math.min(s, 1000000) - 300000) * 0.08;
+    return Math.max(10000, a + b);
+  }
+  function updateCalc(){
+    const s = +range.value;
+    range.style.setProperty('--p', ((s - range.min) / (range.max - range.min) * 100) + '%');
+    document.getElementById('spendOut').innerHTML = fmt$(s) + (s >= 2000000 ? '+' : '') + '<small>/ mo</small>';
+    const custom = s > 1000000;
+    const t = custom ? 2 : s > 300000 ? 1 : 0;
+    tiers.forEach((el, i) => el.classList.toggle('on', i === t));
+    document.getElementById('tierName').textContent = ['Scale','Velocity','Enterprise'][t];
+    if (custom){
+      document.getElementById('rateOut').textContent = 'Custom';
+      document.getElementById('feeOut').textContent = "Let's talk";
+      document.getElementById('effOut').textContent = '< 8.6%';
+    } else {
+      const f = fee(s);
+      document.getElementById('rateOut').textContent = t ? '10 / 8%' : '10%';
+      document.getElementById('feeOut').textContent = fmt$(Math.round(f));
+      document.getElementById('effOut').textContent = (f / s * 100).toFixed(1) + '%';
+    }
+  }
+  range.addEventListener('input', updateCalc); updateCalc();
+
+  /* ---------- reveal + process bars ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); if (e.target.classList.contains('step')) e.target.classList.add('seen'); io.unobserve(e.target); }
+  }), {rootMargin: '0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // safety: never leave content hidden
+  setTimeout(() => document.querySelectorAll('.rv').forEach(el => el.classList.add('in')), 2500);
+
+  /* ---------- application form ---------- */
+  // Set this to your form backend (Formspree, Make, Zapier, your CRM webhook) to receive applications.
+  const FORM_ENDPOINT = '';
+  const form = document.getElementById('applyForm');
+  const msg = document.getElementById('formMsg');
+  function show(cls, title, body){ msg.className = 'msg ' + cls; msg.innerHTML = `<b>${title}</b>${body}`; msg.hidden = false; }
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const missing = [...form.querySelectorAll('[required]')].find(el => !el.checkValidity());
+    if (missing){ missing.focus(); show('warn', 'A few details are missing.', 'Fill in your name, a valid work email, your website and your monthly spend, then submit again.'); return; }
+    const data = Object.fromEntries(new FormData(form));
+    data.channels = [...form.querySelectorAll('[name=channels]:checked')].map(c => c.value).join(', ');
+    if (data.spend === 'lt50' || data.spend === '50-100'){
+      show('warn', "We're probably not the right fit yet.", "We work with brands spending $100k+ a month, because below that our fee takes too much of your budget. Until then, focus on creative volume and server-side tracking.");
+    }
+    if (!FORM_ENDPOINT){
+      if (!(data.spend === 'lt50' || data.spend === '50-100'))
+        show('warn', 'Form not connected yet.', 'This preview has no form backend, so nothing was sent. Add your endpoint to FORM_ENDPOINT in the page script to start receiving applications.');
+      return;
+    }
+    try {
+      const r = await fetch(FORM_ENDPOINT, {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify(data)});
+      if (!r.ok) throw new Error(r.status);
+      if (!(data.spend === 'lt50' || data.spend === '50-100')){
+        show('ok', 'Application received.', "We'll review it and reply within two business days from a senior buyer's address.");
+        form.querySelectorAll('input:not([type=checkbox]),textarea,select').forEach(el => el.disabled = true);
+      }
+    } catch (err){
+      show('warn', "Your application didn't go through.", 'Check your connection and submit again, or email hello@redtraffic.media.');
+    }
+  });
+})();
+</script>
